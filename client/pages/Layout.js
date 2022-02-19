@@ -1,8 +1,7 @@
+import { makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Main from "./Main";
-import { Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
   root: {

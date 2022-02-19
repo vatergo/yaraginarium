@@ -1,5 +1,10 @@
-import { Button, CircularProgress, Paper, Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import {
+  Button,
+  CircularProgress,
+  Paper,
+  Typography,
+  makeStyles,
+} from "@material-ui/core";
 import axios from "axios";
 import React, { useCallback, useState } from "react";
 import { shuffle } from "../utils";
@@ -18,6 +23,7 @@ const useStyles = makeStyles(() => ({
   phrase: {
     cursor: "pointer",
     userSelect: "none",
+    color: "black",
   },
 }));
 
