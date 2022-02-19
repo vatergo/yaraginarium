@@ -1,0 +1,5 @@
+{
+  "port": 3000,
+  "database": "mongodb+srv://vatergo:loveklave@wool-mary.rljon.mongodb.net/yaraginarium?retryWrites=true&w=majority",
+  "secret": "vermilon"
+}
