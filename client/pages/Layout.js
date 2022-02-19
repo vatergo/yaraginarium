@@ -1,6 +1,7 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import AddForm from "./AddFrom";
 import Main from "./Main";
 
 const useStyles = makeStyles(() => ({
@@ -23,7 +24,7 @@ function Layout() {
           <Main />
         </Route>
         <Route path="/add" exact>
-          <Typography>Позже здесь будет форма для добавления фраз</Typography>
+          <AddForm />
         </Route>
         <Redirect to="/main" />
       </Switch>

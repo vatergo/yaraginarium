@@ -4,6 +4,7 @@ import {
   Paper,
   Typography,
   makeStyles,
+  Snackbar,
 } from "@material-ui/core";
 import axios from "axios";
 import React, { useCallback, useState } from "react";
@@ -12,7 +13,6 @@ import { shuffle } from "../utils";
 const useStyles = makeStyles(() => ({
   root: {
     padding: 16,
-    color: "#70757a",
     position: "relative",
     width: "75vw",
     height: "50vh",
@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   phrase: {
     cursor: "pointer",
     userSelect: "none",
-    color: "black",
+    textAlign: "center",
   },
 }));
 
@@ -31,12 +31,11 @@ export default function Main() {
   const classes = useStyles();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [textSnackbar, setTextSnackbar] = useState("");
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
 
   const getData = useCallback(() => {
     setLoading(true);
-    setError("");
     axios
       .get(`/api/phrases`)
       .then(({ data }) => {
@@ -45,7 +44,7 @@ export default function Main() {
       })
       .catch((er) => {
         setLoading(false);
-        setError("Произошла ошибка");
+        setTextSnackbar("Произошла ошибка");
         console.error(er);
       });
   }, []);
@@ -83,11 +82,13 @@ export default function Main() {
           )}
         </Paper>
       )}
-      {error && (
-        <Typography variant="h3" display="block">
-          {error}
-        </Typography>
-      )}
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        open={!!textSnackbar}
+        autoHideDuration={1500}
+        onClose={() => setTextSnackbar("")}
+        message={textSnackbar}
+      />
     </>
   );
 }
