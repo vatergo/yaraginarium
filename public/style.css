@@ -1,10 +1,15 @@
+@font-face {
+  font-family: Roboto;
+  src: url(Comic_CAT.otf);
+}
+
 * {
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif; 
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  background: #f8d316;
 }

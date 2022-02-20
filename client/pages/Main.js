@@ -12,18 +12,44 @@ import { shuffle } from "../utils";
 
 const useStyles = makeStyles(() => ({
   root: {
-    padding: 16,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  phraseWrapper: {
+    marginTop: 32,
+    marginBottom: 96,
+    padding: 32,
     position: "relative",
-    width: "75vw",
+    width: "85vw",
     height: "50vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
+    borderRadius: 30,
+    border: "none",
+  },
+  startButton: {
+    height: 110,
+    width: 315,
+    borderRadius: 20,
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    background: "#ff0000",
+    fontSize: 48,
+  },
+  endButton: {
+    color: "#ff0000",
+    fontSize: 24,
   },
   phrase: {
-    cursor: "pointer",
     userSelect: "none",
     textAlign: "center",
+    fontSize: 36,
+  },
+  progress: {
+    color: "#ff0000",
   },
 }));
 
@@ -49,6 +75,11 @@ export default function Main() {
       });
   }, []);
 
+  const restart = useCallback(() => {
+    setData([]);
+    setCurrentPhraseIndex(0);
+  }, []);
+
   return (
     <>
       {!loading && data.length === 0 && (
@@ -57,30 +88,43 @@ export default function Main() {
           color="primary"
           disableElevation
           onClick={getData}
+          className={classes.startButton}
         >
-          Начать игру
+          Погнали!
         </Button>
       )}
-      {loading && <CircularProgress />}
+      {loading && <CircularProgress className={classes.progress} size={96} />}
       {!loading && data.length > 0 && (
-        <Paper variant="outlined" className={classes.root}>
-          {data.length !== 0 && currentPhraseIndex > data.length - 1 ? (
-            <Typography variant="h3" display="block">
-              Фразы закончились
+        <div className={classes.root}>
+          <Typography display="block" className={classes.phrase}>
+            Ситуэйшн
+          </Typography>
+          <Paper
+            variant="outlined"
+            className={classes.phraseWrapper}
+            onClick={() => {
+              if (currentPhraseIndex > data.length - 1) {
+                return;
+              }
+
+              setCurrentPhraseIndex(currentPhraseIndex + 1);
+            }}
+          >
+            <Typography display="block" className={classes.phrase}>
+              {data.length !== 0 && currentPhraseIndex > data.length - 1
+                ? "Фразы закончились =("
+                : data[currentPhraseIndex].phrase}
             </Typography>
-          ) : (
-            <>
-              <Typography
-                variant="h3"
-                display="block"
-                onClick={() => setCurrentPhraseIndex(currentPhraseIndex + 1)}
-                className={classes.phrase}
-              >
-                {data[currentPhraseIndex].phrase}
-              </Typography>
-            </>
-          )}
-        </Paper>
+          </Paper>
+          <Button
+            color="primary"
+            disableElevation
+            onClick={restart}
+            className={classes.endButton}
+          >
+            Закончить игру
+          </Button>
+        </div>
       )}
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}

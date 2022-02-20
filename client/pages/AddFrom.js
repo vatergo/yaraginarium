@@ -11,17 +11,37 @@ import React, { useCallback, useState } from "react";
 
 const useStyles = makeStyles(() => ({
   root: {
-    padding: 16,
+    padding: 32,
     position: "relative",
-    width: "75vw",
+    width: "85vw",
     height: "50vh",
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
+    flexDirection: "column",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
+    borderRadius: 30,
+    border: "none",
   },
   button: {
-    marginLeft: 16,
-    height: 56,
+    width: "100%",
+    borderRadius: 20,
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    background: "#ff0000",
+    fontSize: 36,
+  },
+  textField: {
+    "& > div": {
+      borderRadius: 20,
+    },
+    "& label.Mui-focused": {
+      color: "#ff0000",
+    },
+    "& .Mui-focused.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+      {
+        borderColor: "#ff0000",
+      },
+    width: "100%",
   },
 }));
 
@@ -54,9 +74,12 @@ export default function AddForm() {
           <TextField
             label="Введите новую фразу"
             variant="outlined"
+            className={classes.textField}
             onChange={({ target }) => {
               setPhrase(target.value);
             }}
+            multiline
+            rows={11}
           />
           <Button
             variant="contained"
