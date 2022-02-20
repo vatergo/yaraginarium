@@ -1,12 +1,21 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
 
-import BigLogoImage from "../assets/BigLogo.svg";
+import RedLogoImage from "../assets/RedLogo.svg";
+import WhiteLogoImage from "../assets/WhiteLogo.svg";
 
 const useStyles = makeStyles(() => ({
-  logo: {
+  redLogo: {
     position: "absolute",
-    animationName: "rotation",
+    animationName: "rotationLeft",
+    animationDuration: "60s",
+    animationIterationCount: "infinite",
+    animationTimingFunction: "linear",
+    userSelect: "none",
+  },
+  whiteLogo: {
+    position: "absolute",
+    animationName: "rotationRight",
     animationDuration: "60s",
     animationIterationCount: "infinite",
     animationTimingFunction: "linear",
@@ -17,5 +26,10 @@ const useStyles = makeStyles(() => ({
 export default function BigLogo() {
   const classes = useStyles();
 
-  return <img src={BigLogoImage} className={classes.logo} />;
+  return (
+    <>
+      <img src={RedLogoImage} className={classes.redLogo} />
+      <img src={WhiteLogoImage} className={classes.whiteLogo} />
+    </>
+  );
 }

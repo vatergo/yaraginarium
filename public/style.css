@@ -18,11 +18,20 @@ body {
   width: 100vw;
 }
 
-@keyframes rotation {
+@keyframes rotationLeft {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes rotationRight {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
   }
 }

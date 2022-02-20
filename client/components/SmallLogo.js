@@ -6,12 +6,12 @@ import SmallLogoImage from "../assets/SmallLogo.svg";
 const useStyles = makeStyles(() => ({
   logo: {
     position: "absolute",
-    animationName: "rotation",
+    animationName: "rotationLeft",
     animationDuration: "60s",
     animationIterationCount: "infinite",
     animationTimingFunction: "linear",
-    top: -134,
-    right: -134,
+    top: -118,
+    right: -118,
     userSelect: "none",
   },
 }));
