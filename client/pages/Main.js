@@ -8,6 +8,8 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import React, { useCallback, useState } from "react";
+import BigLogo from "../components/BigLogo";
+import SmallLogo from "../components/SmallLogo";
 import { shuffle } from "../utils";
 
 const useStyles = makeStyles(() => ({
@@ -83,48 +85,54 @@ export default function Main() {
   return (
     <>
       {!loading && data.length === 0 && (
-        <Button
-          variant="contained"
-          color="primary"
-          disableElevation
-          onClick={getData}
-          className={classes.startButton}
-        >
-          Погнали!
-        </Button>
+        <>
+          <BigLogo />
+          <Button
+            variant="contained"
+            color="primary"
+            disableElevation
+            onClick={getData}
+            className={classes.startButton}
+          >
+            Погнали!
+          </Button>
+        </>
       )}
       {loading && <CircularProgress className={classes.progress} size={96} />}
       {!loading && data.length > 0 && (
-        <div className={classes.root}>
-          <Typography display="block" className={classes.phrase}>
-            Ситуэйшн
-          </Typography>
-          <Paper
-            variant="outlined"
-            className={classes.phraseWrapper}
-            onClick={() => {
-              if (currentPhraseIndex > data.length - 1) {
-                return;
-              }
-
-              setCurrentPhraseIndex(currentPhraseIndex + 1);
-            }}
-          >
+        <>
+          <SmallLogo />
+          <div className={classes.root}>
             <Typography display="block" className={classes.phrase}>
-              {data.length !== 0 && currentPhraseIndex > data.length - 1
-                ? "Фразы закончились =("
-                : data[currentPhraseIndex].phrase}
+              Ситуэйшн
             </Typography>
-          </Paper>
-          <Button
-            color="primary"
-            disableElevation
-            onClick={restart}
-            className={classes.endButton}
-          >
-            Закончить игру
-          </Button>
-        </div>
+            <Paper
+              variant="outlined"
+              className={classes.phraseWrapper}
+              onClick={() => {
+                if (currentPhraseIndex > data.length - 1) {
+                  return;
+                }
+
+                setCurrentPhraseIndex(currentPhraseIndex + 1);
+              }}
+            >
+              <Typography display="block" className={classes.phrase}>
+                {data.length !== 0 && currentPhraseIndex > data.length - 1
+                  ? "Фразы закончились =("
+                  : data[currentPhraseIndex].phrase}
+              </Typography>
+            </Paper>
+            <Button
+              color="primary"
+              disableElevation
+              onClick={restart}
+              className={classes.endButton}
+            >
+              Закончить игру
+            </Button>
+          </div>
+        </>
       )}
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}

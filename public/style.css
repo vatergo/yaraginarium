@@ -13,3 +13,12 @@ body {
   padding: 0;
   background: #f8d316;
 }
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
