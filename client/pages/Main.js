@@ -32,6 +32,7 @@ const useStyles = makeStyles(() => ({
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
     borderRadius: 30,
     border: "none",
+    cursor: "pointer",
   },
   startButton: {
     height: 110,
@@ -40,10 +41,17 @@ const useStyles = makeStyles(() => ({
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     background: "#ff0000",
     fontSize: 48,
+    "&:hover": {
+      backgroundColor: "#d70000",
+    },
   },
   endButton: {
     color: "#ff0000",
     fontSize: 24,
+    "&:hover": {
+      backgroundColor: "transparent",
+      color: "#d70000",
+    },
   },
   phrase: {
     userSelect: "none",

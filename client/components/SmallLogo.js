@@ -12,6 +12,7 @@ const useStyles = makeStyles(() => ({
     animationTimingFunction: "linear",
     top: -134,
     right: -134,
+    userSelect: "none",
   },
 }));
 

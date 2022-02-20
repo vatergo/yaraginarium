@@ -10,6 +10,7 @@ const useStyles = makeStyles(() => ({
     animationDuration: "60s",
     animationIterationCount: "infinite",
     animationTimingFunction: "linear",
+    userSelect: "none",
   },
 }));
 

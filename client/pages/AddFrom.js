@@ -29,6 +29,9 @@ const useStyles = makeStyles(() => ({
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     background: "#ff0000",
     fontSize: 36,
+    "&:hover": {
+      backgroundColor: "#d70000",
+    },
   },
   textField: {
     "& > div": {
