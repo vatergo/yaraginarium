@@ -9,6 +9,7 @@ import {
 import axios from "axios";
 import React, { useCallback, useState } from "react";
 import BigLogo from "../components/BigLogo";
+import Card from "../components/Card";
 import SmallLogo from "../components/SmallLogo";
 import { shuffle } from "../utils";
 
@@ -18,21 +19,6 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-  },
-  phraseWrapper: {
-    marginTop: 32,
-    marginBottom: 96,
-    padding: 32,
-    position: "relative",
-    width: "85vw",
-    height: "50vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
-    borderRadius: 30,
-    border: "none",
-    cursor: "pointer",
   },
   startButton: {
     height: 110,
@@ -53,13 +39,13 @@ const useStyles = makeStyles(() => ({
       color: "#d70000",
     },
   },
-  phrase: {
+  progress: {
+    color: "#ff0000",
+  },
+  title: {
     userSelect: "none",
     textAlign: "center",
     fontSize: 36,
-  },
-  progress: {
-    color: "#ff0000",
   },
 }));
 
@@ -68,7 +54,9 @@ export default function Main() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [textSnackbar, setTextSnackbar] = useState("");
-  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [rotate, setRotate] = useState(0);
+  const [currentPhraseIndexFront, setCurrentPhraseIndexFront] = useState(0);
+  const [currentPhraseIndexBack, setCurrentPhraseIndexBack] = useState(-1);
 
   const getData = useCallback(() => {
     setLoading(true);
@@ -87,7 +75,9 @@ export default function Main() {
 
   const restart = useCallback(() => {
     setData([]);
-    setCurrentPhraseIndex(0);
+    setRotate(0);
+    setCurrentPhraseIndexFront(0);
+    setCurrentPhraseIndexBack(-1);
   }, []);
 
   return (
@@ -111,26 +101,38 @@ export default function Main() {
         <>
           <SmallLogo />
           <div className={classes.root}>
-            <Typography display="block" className={classes.phrase}>
+            <Typography display="block" className={classes.title}>
               Ситуэйшн
             </Typography>
-            <Paper
-              variant="outlined"
-              className={classes.phraseWrapper}
-              onClick={() => {
-                if (currentPhraseIndex > data.length - 1) {
+            <Card
+              rotate={rotate}
+              onClickBack={() => {
+                if (currentPhraseIndexFront + 1 > data.length - 1) {
                   return;
                 }
+                setRotate(rotate + 1);
 
-                setCurrentPhraseIndex(currentPhraseIndex + 1);
+                setCurrentPhraseIndexFront(currentPhraseIndexFront + 2);
               }}
-            >
-              <Typography display="block" className={classes.phrase}>
-                {data.length !== 0 && currentPhraseIndex > data.length - 1
+              onClickFront={() => {
+                if (currentPhraseIndexBack + 1 > data.length - 1) {
+                  return;
+                }
+                setRotate(rotate + 1);
+
+                setCurrentPhraseIndexBack(currentPhraseIndexBack + 2);
+              }}
+              phraseFront={
+                data.length !== 0 && currentPhraseIndexFront > data.length - 1
                   ? "Фразы закончились =("
-                  : data[currentPhraseIndex].phrase}
-              </Typography>
-            </Paper>
+                  : data[currentPhraseIndexFront]?.phrase
+              }
+              phraseBack={
+                data.length !== 0 && currentPhraseIndexBack > data.length - 1
+                  ? "Фразы закончились =("
+                  : data[currentPhraseIndexBack]?.phrase
+              }
+            />
             <Button
               color="primary"
               disableElevation
