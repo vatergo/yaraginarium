@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: "space-around",
     alignItems: "center",
     width: "100%",
-    height: "90%",
+    height: "85%",
   },
   startButton: {
     height: 110,
