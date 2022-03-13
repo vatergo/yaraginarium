@@ -4,7 +4,7 @@ import config from "config";
 import { connect } from "mongoose";
 import phrases from "./routes/phrases";
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 
 const database = config.get("database");
 
