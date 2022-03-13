@@ -15,17 +15,23 @@ import SmallLogo from "../components/SmallLogo";
 
 const useStyles = makeStyles(() => ({
   root: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+  },
+  paper: {
     padding: 32,
     position: "relative",
     width: "85%",
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "column",
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
     borderRadius: 30,
     border: "none",
-    height: "100%",
   },
   button: {
     width: "100%",
@@ -86,33 +92,36 @@ export default function AddForm() {
       {loading && <CircularProgress />}
       {!loading && (
         <>
-          <Paper variant="outlined" className={classes.root}>
-            <TextField
-              label="Введите новую фразу"
-              variant="outlined"
-              className={classes.textField}
-              onChange={({ target }) => {
-                setPhrase(target.value);
-              }}
-              multiline
-              rows={2}
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              disableElevation
-              onClick={addPhrase}
-              className={classes.button}
-            >
-              Добавить
-            </Button>
-          </Paper>
           <Link to="/main">
             <IconButton className={classes.backButton}>
               <ArrowBackIosOutlined fontSize="large" />
             </IconButton>
           </Link>
           <SmallLogo />
+          <div className={classes.root}>
+            <Paper variant="outlined" className={classes.paper}>
+              <TextField
+                label="Введите новую фразу"
+                variant="outlined"
+                className={classes.textField}
+                onChange={({ target }) => {
+                  setPhrase(target.value);
+                }}
+                multiline
+                rows={2}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                disableElevation
+                onClick={addPhrase}
+                className={classes.button}
+                disabled={!phrase}
+              >
+                Добавить
+              </Button>
+            </Paper>
+          </div>
         </>
       )}
       <Snackbar
