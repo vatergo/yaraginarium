@@ -15,6 +15,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     maxWidth: 500,
     margin: "0 auto",
+    overflow: "hidden",
   },
 }));
 
