@@ -14,7 +14,6 @@ const useStyles = makeStyles(() => ({
     padding: 32,
     position: "relative",
     width: "85%",
-    height: "50vh",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -24,7 +23,7 @@ const useStyles = makeStyles(() => ({
     border: "none",
   },
   button: {
-    width: "90%",
+    width: "100%",
     borderRadius: 20,
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     background: "#ff0000",
@@ -45,6 +44,7 @@ const useStyles = makeStyles(() => ({
         borderColor: "#ff0000",
       },
     width: "100%",
+    marginBottom: 28,
   },
 }));
 
@@ -82,7 +82,7 @@ export default function AddForm() {
               setPhrase(target.value);
             }}
             multiline
-            rows={11}
+            rows={2}
           />
           <Button
             variant="contained"
