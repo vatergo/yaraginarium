@@ -3,6 +3,10 @@
   src: url(Comic_CAT.otf);
 }
 
+:root {
+  --app-height: 100%;
+}
+
 * {
   box-sizing: border-box;
   font-family: Roboto, sans-serif;
@@ -13,14 +17,15 @@ body {
   padding: 0;
   background: #f8d316;
   overflow: hidden;
-  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100vh;
+  height: var(--app-height);
   width: 100vw;
 }
 
 #mount-point {
   overflow: hidden;
   position: relative;
+  height: 100%;
 }
 
 @keyframes rotationLeft {

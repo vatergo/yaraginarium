@@ -9,9 +9,7 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    height:
-      "100vh" /* Fallback for browsers that do not support Custom Properties */,
-    height: "calc(var(--vh, 1vh) * 100)",
+    height: "100%",
     justifyContent: "center",
     maxWidth: 500,
     margin: "0 auto",
