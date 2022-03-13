@@ -18,6 +18,11 @@ body {
   width: 100vw;
 }
 
+#mount-point {
+  overflow: hidden;
+  position: relative;
+}
+
 @keyframes rotationLeft {
   0% {
     transform: rotate(0deg);
