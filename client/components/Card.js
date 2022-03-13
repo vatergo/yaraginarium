@@ -3,8 +3,6 @@ import React from "react";
 
 const useStyles = makeStyles(() => ({
   wrapper: {
-    marginTop: 32,
-    marginBottom: 96,
     position: "relative",
     width: "85%",
     height: "50vh",
@@ -32,7 +30,7 @@ const useStyles = makeStyles(() => ({
     textAlign: "center",
     fontSize: 25,
     transition: ".5s",
-    "@media (min-width: 376px)": {
+    "@media (min-width: 376px) and (min-height: 500px)": {
       fontSize: 36,
     },
   },

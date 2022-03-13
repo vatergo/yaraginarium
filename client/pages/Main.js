@@ -17,9 +17,10 @@ const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
     width: "100%",
+    height: "100%",
   },
   startButton: {
     height: 110,
