@@ -1,13 +1,15 @@
 import {
   Button,
   CircularProgress,
-  Paper,
   Typography,
   makeStyles,
   Snackbar,
+  IconButton,
 } from "@material-ui/core";
+import { AddCircleOutline } from "@material-ui/icons";
 import axios from "axios";
 import React, { useCallback, useState } from "react";
+import { Link } from "react-router-dom";
 import BigLogo from "../components/BigLogo";
 import Card from "../components/Card";
 import SmallLogo from "../components/SmallLogo";
@@ -40,6 +42,13 @@ const useStyles = makeStyles(() => ({
       backgroundColor: "transparent",
       color: "#d70000",
     },
+  },
+  addButton: {
+    position: "absolute",
+    top: 12,
+    right: 12,
+    color: "#ff0000",
+    opacity: 0.6,
   },
   progress: {
     color: "#ff0000",
@@ -96,6 +105,11 @@ export default function Main() {
           >
             Погнали!
           </Button>
+          <Link to="/add">
+            <IconButton className={classes.addButton}>
+              <AddCircleOutline fontSize="large" />
+            </IconButton>
+          </Link>
         </>
       )}
       {loading && <CircularProgress className={classes.progress} size={96} />}

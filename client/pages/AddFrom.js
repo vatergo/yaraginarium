@@ -5,9 +5,13 @@ import {
   makeStyles,
   Snackbar,
   TextField,
+  IconButton,
 } from "@material-ui/core";
+import { ArrowBackIosOutlined } from "@material-ui/icons";
 import axios from "axios";
 import React, { useCallback, useState } from "react";
+import { Link } from "react-router-dom";
+import SmallLogo from "../components/SmallLogo";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -46,6 +50,13 @@ const useStyles = makeStyles(() => ({
     width: "100%",
     marginBottom: 28,
   },
+  backButton: {
+    position: "absolute",
+    top: 12,
+    left: 12,
+    color: "#ff0000",
+    opacity: 0.6,
+  },
 }));
 
 export default function AddForm() {
@@ -73,27 +84,35 @@ export default function AddForm() {
     <>
       {loading && <CircularProgress />}
       {!loading && (
-        <Paper variant="outlined" className={classes.root}>
-          <TextField
-            label="Введите новую фразу"
-            variant="outlined"
-            className={classes.textField}
-            onChange={({ target }) => {
-              setPhrase(target.value);
-            }}
-            multiline
-            rows={2}
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            disableElevation
-            onClick={addPhrase}
-            className={classes.button}
-          >
-            Добавить
-          </Button>
-        </Paper>
+        <>
+          <Paper variant="outlined" className={classes.root}>
+            <TextField
+              label="Введите новую фразу"
+              variant="outlined"
+              className={classes.textField}
+              onChange={({ target }) => {
+                setPhrase(target.value);
+              }}
+              multiline
+              rows={2}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              disableElevation
+              onClick={addPhrase}
+              className={classes.button}
+            >
+              Добавить
+            </Button>
+          </Paper>
+          <Link to="/main">
+            <IconButton className={classes.backButton}>
+              <ArrowBackIosOutlined fontSize="large" />
+            </IconButton>
+          </Link>
+          <SmallLogo />
+        </>
       )}
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}

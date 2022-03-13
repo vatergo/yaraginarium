@@ -13,6 +13,7 @@ const useStyles = makeStyles(() => ({
     top: -118,
     right: -118,
     userSelect: "none",
+    zIndex: -1,
   },
 }));
 

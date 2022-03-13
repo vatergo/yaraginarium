@@ -12,6 +12,7 @@ const useStyles = makeStyles(() => ({
     animationIterationCount: "infinite",
     animationTimingFunction: "linear",
     userSelect: "none",
+    zIndex: -1,
   },
   whiteLogo: {
     position: "absolute",
@@ -20,6 +21,7 @@ const useStyles = makeStyles(() => ({
     animationIterationCount: "infinite",
     animationTimingFunction: "linear",
     userSelect: "none",
+    zIndex: -1,
   },
 }));
 
