@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
   root: {
     padding: 32,
     position: "relative",
-    width: "85vw",
+    width: "85%",
     height: "50vh",
     display: "flex",
     justifyContent: "space-between",
@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
     border: "none",
   },
   button: {
-    width: "100%",
+    width: "90%",
     borderRadius: 20,
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     background: "#ff0000",

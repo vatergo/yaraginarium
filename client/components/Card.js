@@ -6,7 +6,7 @@ const useStyles = makeStyles(() => ({
     marginTop: 32,
     marginBottom: 96,
     position: "relative",
-    width: "85vw",
+    width: "85%",
     height: "50vh",
     cursor: "pointer",
     perspective: 1000,
@@ -30,8 +30,11 @@ const useStyles = makeStyles(() => ({
   phrase: {
     userSelect: "none",
     textAlign: "center",
-    fontSize: 36,
+    fontSize: 25,
     transition: ".5s",
+    "@media (min-width: 376px)": {
+      fontSize: 36,
+    },
   },
 }));
 
